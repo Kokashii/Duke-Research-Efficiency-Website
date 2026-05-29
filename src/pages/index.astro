@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureBoard from '../components/FeatureBoard.astro';
+import LeaderboardTable from '../components/LeaderboardTable.astro';
+import { users, efficientUsers, inefficientUsers } from '../data/users';
+---
+<BaseLayout title="SLURM | Home" active="home">
+  <section class="hero">
+    <div>
+      <h2>Cluster efficiency at a glance</h2>
+      <p>A dark gray dashboard inspired by Grafana and GitHub, with Canva-style leaderboard panels for the best and worst efficiency performers.</p>
+    </div>
+    <div class="tab-row">
+      <a class="tab active" href="/">Home</a>
+      <a class="tab" href="/leaderboard">Leaderboard</a>
+      <a class="tab" href="/stats">Stats</a>
+    </div>
+  </section>
+  <div class="grid">
+    <FeatureBoard title="Most Efficient Users" users={efficientUsers} />
+    <FeatureBoard title="Most Inefficient Users" users={inefficientUsers} variant="bad" />
+  </div>
+  <LeaderboardTable users={users} />
+</BaseLayout>

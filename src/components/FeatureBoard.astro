@@ -1,0 +1,23 @@
+---
+const { title, users, variant = 'good' } = Astro.props;
+---
+<section class="panel">
+  <div class="panel-header">
+    <div>
+      <h3>{title}</h3>
+      <small>Top five slots from imported efficiency data</small>
+    </div>
+    <span class="metric-pill">live-ready</span>
+  </div>
+  <div class:list={['feature-table', variant === 'bad' && 'bad-table']}>
+    <div class="head rank">#</div><div class="head name">Name</div><div class="head chip">Chip</div><div class="head gain">Gain</div>
+    {users.map((user) => (
+      <>
+        <div class="rank">{user.rank}</div>
+        <div class="name">{user.name}</div>
+        <div class="chip">{user.chip.toFixed(1)}%</div>
+        <div class="gain">{user.gain}</div>
+      </>
+    ))}
+  </div>
+</section>

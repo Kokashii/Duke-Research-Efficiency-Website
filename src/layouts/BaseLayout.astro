@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+const { title = 'SLURM Leaderboard', active = 'home' } = Astro.props;
+const links = [
+  { href: '/', label: 'Home', key: 'home', icon: '⌂' },
+  { href: '/leaderboard', label: 'Leaderboard', key: 'leaderboard', icon: '▤' },
+  { href: '/stats', label: 'Stats', key: 'stats', icon: '◌' }
+];
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/">
+          <div class="logo">S</div>
+          <div>
+            <h1>SLURM</h1>
+            <p>Efficiency dashboard</p>
+          </div>
+        </a>
+        <nav class="nav-group" aria-label="Primary navigation">
+          {links.map((link) => (
+            <a class:list={['nav-link', active === link.key && 'active']} href={link.href}>
+              <span class="nav-icon">{link.icon}</span><span>{link.label}</span>
+            </a>
+          ))}
+        </nav>
+        <div class="side-card">
+          <strong>Data ready</strong>
+          <p>Mock users are isolated in <code>src/data/users.ts</code> so your imported parser can replace them later.</p>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="topbar">
+          <input class="search" placeholder="Search users, jobs, chips..." />
+          <div class="actions"><button class="icon-btn">⚙</button><button class="icon-btn">↻</button></div>
+        </header>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

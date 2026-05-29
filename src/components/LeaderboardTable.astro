@@ -1,0 +1,31 @@
+---
+const { users } = Astro.props;
+---
+<section class="panel">
+  <div class="board-controls">
+    <div>
+      <h3>Regular Leaderboard</h3>
+      <small>25 users per page; connect this to pagination when real data lands.</small>
+    </div>
+    <select class="select" aria-label="Leaderboard page">
+      <option>Users 1-25</option>
+      <option>Users 26-50</option>
+      <option>Users 51-75</option>
+    </select>
+  </div>
+  <table class="leaderboard">
+    <thead><tr><th>Slot</th><th>User</th><th>Chip</th><th>Gain</th><th>Jobs</th><th>Runtime</th></tr></thead>
+    <tbody>
+      {users.slice(0, 25).map((user) => (
+        <tr>
+          <td><span class="rank-badge">{user.rank}</span></td>
+          <td><strong>{user.name}</strong></td>
+          <td><div class="progress"><span style={`width:${user.chip}%`}></span></div>{user.chip.toFixed(1)}%</td>
+          <td>{user.gain > 0 ? `+${user.gain}` : user.gain}</td>
+          <td>{user.jobs}</td>
+          <td>{user.runtime}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>

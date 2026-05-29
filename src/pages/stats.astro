@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SLURM | Stats" active="stats">
+  <section class="hero"><div><h2>Stats</h2><p>Placeholder cards for cluster utilization, queue pressure, GPU usage, and trend lines.</p></div></section>
+  <div class="grid">
+    {['Average chip efficiency', 'Total jobs parsed', 'Runtime saved', 'Users tracked'].map((label, index) => (
+      <section class="panel"><h3>{label}</h3><p style="font-size:2rem;margin:12px 0 0">{[82.4, 1840, 312, 75][index]}{index === 0 ? '%' : ''}</p></section>
+    ))}
+  </div>
+</BaseLayout>

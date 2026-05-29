@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeaderboardTable from '../components/LeaderboardTable.astro';
+import { users } from '../data/users';
+---
+<BaseLayout title="SLURM | Leaderboard" active="leaderboard">
+  <section class="hero"><div><h2>Leaderboard</h2><p>Full ranked user list with slot number, chip efficiency, gain, jobs, and runtime.</p></div></section>
+  <LeaderboardTable users={users} />
+</BaseLayout>
