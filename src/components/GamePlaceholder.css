@@ -1,0 +1,20 @@
+.game-container {
+  width: min(1000px, 90vw);
+  height: 600px;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 20px;
+  background: #222;
+  color: white;
+  overflow: hidden;
+}
+
+.score {
+  padding: 1rem;
+}
+
+.target {
+  position: absolute;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}

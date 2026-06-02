@@ -1,11 +1,356 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import GamePlaceholder from "../components/GamePlaceholder.jsx";
+import LeaderBoard from "../components/LeaderBoard.astro";
+import LoserBoard from "../components/LoserBoard.astro";
 ---
+<header class="header">
+  <div class="header-brand">
+    <img class="logo" src="/Lboard_Logo.png" alt="LBoard Logo" />
+    <h1>L Board</h1>
+  </div>
+</header>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <nav class="sticky-nav">
+	<a href="#game-section">Game</a>
+	<a class= "leader-link" href="#leader-section">Leader Board</a>
+	<a class= "loser-link" href="#loser-section">Loser Board</a>
+  </nav>
+
+<main>
+  <section id="game-section" class="game-section">
+  <div class="game-wrapper">
+
+    <div class="status-banner">
+      <span class="status-dot"></span>
+      <span>Cluster Utilization:  Low </span>
+    </div>
+
+    <GamePlaceholder client:load />
+
+  </div>
+</section>
+
+  <section id="leader-section" class="leader-section">
+    <LeaderBoard />
+	<h1>Leader Board</h1>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="/Name.png" alt="Name icon" />
+						</span>
+						Name
+					</span>
+				</th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="/GPU.png" alt="GPU icon" />
+						</span>
+						Efficiency
+					</span>
+				</th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpolygon%20points='5,16%2012,8%2019,16'%20fill='%2310b981'/%3E%3C/svg%3E" alt="Up arrow icon" />
+						</span>
+						GPU Hours Gained
+					</span>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Alice</td>
+				<td>95</td>
+				<td>95</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Bob</td>
+				<td>88</td>
+				<td>95</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Charlie</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Theo</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Theo</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+		</tbody>
+	</table>
+  </section>
+
+  <section id="loser-section" class="loser-section">
+    <LoserBoard />
+	<h1>Loser Board</h1>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="/Name.png" alt="Name icon" />
+						</span>
+						Name
+					</span>
+				</th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="/GPU.png" alt="GPU icon" />
+						</span>
+						Efficiency
+					</span>
+				</th>
+				<th>
+					<span class="table-label">
+						<span class="table-icon-bg">
+							<img class="table-icon" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpolygon%20points='12,18%205,8%2019,8'%20fill='%23ef4444'/%3E%3C/svg%3E" alt="Down arrow icon" />
+						</span>
+						GPU Hours Gained
+					</span>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Aaron</td>
+				<td>95</td>
+				<td>95</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Ian</td>
+				<td>88</td>
+				<td>95</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Theo</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Theo</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Theo</td>
+				<td>92</td>
+				<td>92</td>
+			</tr>
+		</tbody>
+	</table>
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0;
+  }
+
+  section {
+    min-height: 100vh;
+    padding: 1rem 2rem;
+  }
+
+  .game-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: #111;
+	color: #fff;
+	padding-top:0;
+  }
+
+  .leader-section {
+    background: #f4f4f4;
+	color: #333;
+  }
+
+  .loser-section {
+    background: #e5e5e5;
+	color: #333;
+  }
+
+  header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	color: #fff;
+	background: #222;
+	min-height: 50px;
+  }
+
+  .header-brand {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+  }
+
+  .header-brand h1 {
+	margin: 0;
+  }
+
+  .logo {
+	width: 130px;
+	height: 130px;
+	object-fit: contain;
+	flex-shrink: 0;
+  }
+
+  .leader-section h1,
+  .loser-section h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .sticky-nav {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+
+	background: #222;
+	padding: 0.75rem 0;
+  }
+
+  nav a{
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	margin-left: 1rem;
+	transition: all 0.2s ease;
+  }
+
+  nav a:hover {
+	background: #717171;
+	transform: translateY(-2px);
+	padding: 0.75rem 1.25rem;
+	border-radius: 8px;
+
+  }
+
+  nav a.leader-link:hover {
+	background: #22c55e;
+	transform: translateY(-2px);
+	border-radius: 8px;
+	color: white;
+  }
+
+  nav a.loser-link:hover {
+	background: #ef4444;
+	transform: translateY(-2px);
+	border-radius: 8px;
+	color: white;
+  }
+
+  .game-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+  }
+
+	.status-banner {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+
+	padding: 0.75rem 1.25rem;
+
+	background: rgba(255, 255, 255, 0);
+	border-radius: 12px;
+  }
+
+	.status-dot {
+	width: 12px;
+	height: 12px;
+
+	background: #22c55e;
+	border-radius: 50%;
+  }
+
+  /*table styles*/
+  table {
+	width: 100%;
+	max-width: 900px;
+	margin: 2rem auto;
+	border-collapse: collapse;
+	background: white;
+	border-radius: 16px;
+	overflow: hidden;
+	margin: 2rem auto;
+  }
+
+	th,
+	td {
+	padding: 1rem 1.25rem;
+	text-align:center;
+	border-bottom: 1px solid #ddd;
+  }
+
+	th {
+	background: #222;
+	color: white;
+	font-weight: 700;
+  }
+
+  .table-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	white-space: nowrap;
+  }
+
+  .table-icon-bg {
+	width: 36px;
+	height: 36px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  .table-icon {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+  }
+	tbody tr:last-child td {
+	border-bottom: none;
+  }
+
+</style>
